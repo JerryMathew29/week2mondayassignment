@@ -1,0 +1,1683 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Functions, Scoping, Data Collections 1 & List Comprehensions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# object.action"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# list.append\n",
+    "# list.remove\n",
+    "#     .pop"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# str.title\n",
+    "#    .upper\n",
+    "#    .lower"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# doSomething"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Tasks Today:\n",
+    "\n",
+    "<i>Monday Additions (or, and ... if statements)</i>\n",
+    "\n",
+    "1) String Manipulation <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; a) strip() <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; b) title() <br>\n",
+    "2) Working With Lists <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; a) min() <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; b) max() <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; c) sum() <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; d) sort() <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; e) Copying a List <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; f) 'in' keyword <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; g) 'not in' keyword <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; i) Checking an Empty List <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; j) Removing Instances with a Loop <br>\n",
+    "3) List Comprehensions <br>\n",
+    "4) Tuples <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; a) sorted() <br>\n",
+    "5) Functions <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; a) User-Defined vs. Built-In Functions <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; b) Accepting Parameters <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; c) Default Parameters <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; d) Making an Argument Optional <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; e) Keyword Arguments <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; f) Returning Values <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; g) *args <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; h) Docstring <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; i) Using a User Function in a Loop <br>\n",
+    "6) Scope"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Monday Additions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Differences between Python 2 & Python 3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "invalid syntax (<ipython-input-6-6d4c8bec25be>, line 5)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;36m  File \u001b[0;32m\"<ipython-input-6-6d4c8bec25be>\"\u001b[0;36m, line \u001b[0;32m5\u001b[0m\n\u001b[0;31m    def\u001b[0m\n\u001b[0m       ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid syntax\n"
+     ]
+    }
+   ],
+   "source": [
+    "# keywords/operator\n",
+    "continue\n",
+    "pass\n",
+    "return\n",
+    "def\n",
+    "class\n",
+    "in\n",
+    "if\n",
+    "for\n",
+    "or\n",
+    "and\n",
+    "while\n",
+    "lambda\n",
+    "None\n",
+    "break\n",
+    "\n",
+    "# Python2\n",
+    "print\n",
+    "\n",
+    "# Python3\n",
+    "print()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "print \"Hello\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Python2\n",
+    "name = \"Derek\"\n",
+    "\"Hello, my name is %s\" % (name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"Hello, my name is {}\".format(name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "# Python3.5+\n",
+    "f\"Hello, my name is {name}\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "# 0x0fabc1347 = \"Derek\"\n",
+    "name = \"Derek\"\n",
+    "print(name)\n",
+    "\n",
+    "# 0x0fdef8976453 = \"Derek\"\n",
+    "name = \"Hawkins\"\n",
+    "print(name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Software Development\n",
+    "# Java\n",
+    "# C#\n",
+    "# Ruby\n",
+    "# JavaScript (Node)\n",
+    "# Go\n",
+    "# Gosu\n",
+    "\n",
+    "# Game Development\n",
+    "# C++\n",
+    "\n",
+    "# Data Analysis\n",
+    "# Python\n",
+    "# R\n",
+    "# SQL"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Glossary\n",
+    "variable = value stored at a memory address\n",
+    "memory address = data block where values are stored in\n",
+    "value = \n",
+    "function = \n",
+    "class = \n",
+    "argument = the real piece of data that you're passing into a function/method/class\n",
+    "parameter/placeholder/temporary variable = the placeholder data\n",
+    "statement = Any Python operation. Usually starts with 'while', 'for', 'if'\n",
+    "keyword = word that gives Python a set of instructions\n",
+    "index =  number representation of a real value \n",
+    "iterable = anything that you can loop/iterate over.\n",
+    "iteration =  The next value in an iterable\n",
+    "mutable = can change\n",
+    "immutable = cannot change"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Common interview Question:\n",
+    "# Are arguments in Python passed by value, or by reference?\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "IndentationError",
+     "evalue": "expected an indented block (<ipython-input-9-1d520f829183>, line 2)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;36m  File \u001b[0;32m\"<ipython-input-9-1d520f829183>\"\u001b[0;36m, line \u001b[0;32m2\u001b[0m\n\u001b[0;31m    name = \"Tomas\"\u001b[0m\n\u001b[0m       ^\u001b[0m\n\u001b[0;31mIndentationError\u001b[0m\u001b[0;31m:\u001b[0m expected an indented block\n"
+     ]
+    }
+   ],
+   "source": [
+    "def username(name):\n",
+    "name = \"Tomas\"\n",
+    "    print(f\"{name.upper()}\")\n",
+    "    \n",
+    "    something = \"Armando\"\n",
+    "username(something)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "name1 = \"Derek\"\n",
+    "name2 = \"Michael\"\n",
+    "name3 = \"Joel\"\n",
+    "name4 = \"Brian\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Python keywords\n",
+    "if\n",
+    "in\n",
+    "or\n",
+    "and\n",
+    "is\n",
+    "for\n",
+    "while\n",
+    "break\n",
+    "continue\n",
+    "pass"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "name1 == \"Derek\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "name2 == \"Bay\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Using 'or' in if statements"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Using 'and' in if statements"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "if name1 == \"Derek\" or name2 == \"Michael\":\n",
+    "    print(\"Hey, I know you two!\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "if name1 == \"Derek\" and name2 == \"Michael\":\n",
+    "    print(\"Hey, I know you two!\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "if name1 == \"Derek\" or name2 == \"Bay\":\n",
+    "    print(\"Hey, I know you two!\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "if name1 == \"Derek\" and name2 == \"Bay\":\n",
+    "    print(\"Hey, I know you two!\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "if name1 == \"Derek\" or (name2 == \"Michael\" and name3 == \"Joel\"):\n",
+    "    print(\"Hey, I know you two!\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "if name1 == \"Derek\" and (name2 == \"Bay\" and name3 == \"Joel\"):\n",
+    "    print(\"Hey, I know you two!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Scope"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Global - Anything that's defined within the topmost level of a cell/page\n",
+    "Local - Anything that's defined within a statement"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Indentation"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "if name1 == \"Derek\" or name2 == \"Michael\":\n",
+    "    print(\"Hey, I know you two!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Strings (a string a an object. Every string object has actions that can be performed on it)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_string = \"                      This is a string that I'm working on                         \""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .lstrip()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_string.lstrip()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .rstrip()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_string.rstrip()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .strip()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_string.strip()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .title()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_string.title()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .lower()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_string.lower()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .upper()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_string.upper()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .replace()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_string = \"                      This string is a string that I'm working on. It's still a strIng though                         \""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_string.replace(\"string\", \"sentence\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "str"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_string"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'my_string' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-10-c41e47ee8af1>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mmy_string\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m40\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m: name 'my_string' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "my_string[40]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .join()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "statement_list = [\"This\", \"is\", \"a\", \"Coding\", \"Temple\", \"Python\", \"Course\"]\n",
+    "\" \".join(statement_list)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "nums_list = [\"1\", \"2\", \"3\", \"4\", \"5\", \"6\"]\n",
+    "\" \".join(nums_list)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .count()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "my_string.count('z') + my_string.count('a')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# String slicing\n",
+    "my_string[0:50]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# String membership\n",
+    "\"I'm\" in my_string"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Lists"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list1 = [1, 2, 5, 8, 34]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(list1[0])\n",
+    "print(list1[1])\n",
+    "print(list1[2])\n",
+    "print(list1[3])\n",
+    "print(list1[4])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .append()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "list1.append(999)\n",
+    "list1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "list1.append(\"string\")\n",
+    "list1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "list1.append([0, 9,8 , 7, 6, 5])\n",
+    "list1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "list1[7]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "for i in list1:\n",
+    "    if not isinstance(i, list):\n",
+    "        pass\n",
+    "    else:\n",
+    "        for nums in i:\n",
+    "            print(nums)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .extend()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list1.extend([\"Hey\", \"Jude\"])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "list1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list1 + [\"Ripal\", \"Derek\"]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .remove()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list1.remove([0, 9, 8, 7, 6, 5])\n",
+    "list1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list1.remove(2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .pop()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list1.pop()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "list1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list1.pop(5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .sort()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[79, 82, 69, 4, 92, 93, 10, 46, 81, 79]"
+      ]
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import random\n",
+    "new_list = [random.randint(0, 100) for i in range(10)]\n",
+    "new_list"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "new_list.sort()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "new_list"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### List Slicing [start:stop:step]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "new_list[3:8]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "new_list[0::2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "new_list[::2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "new_list[-1:-7:-2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "new_list[-7:-1]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "for i in new_list[3:8]:\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### List Membership"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "if \"Hey\" in list1:\n",
+    "    print(\"That worked\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Empty List"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# How to check whether a lit is empty or not?\n",
+    "if list1:\n",
+    "    print(\"I have stuff inside my list\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# None = does not exist\n",
+    "# not None = does exist"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list2 = []\n",
+    "\n",
+    "if list2 is not None:\n",
+    "    print(\"I have stuff inside my list\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "if list3 is None:\n",
+    "    print(\"it's here\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Looping"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "len(new_list)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Regular Loop\n",
+    "index = 0\n",
+    "\n",
+    "while index < len(new_list):\n",
+    "    print(index, new_list[index])\n",
+    "    index+=1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Enhanced Loop\n",
+    "for temporary_variable in new_list:\n",
+    "    print(temporary_variable)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# len(new_list)\n",
+    "list(range(len(new_list)))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "for index in range(len(new_list)):\n",
+    "    print(f\"{index+1}: {new_list[index]}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "for temporary_variable in range(len(new_list)):\n",
+    "    print(new_list[temporary_variable])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Mutable vs Immutable"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "\"This string is a string that I'm working on. It's still a strIng though\""
+      ]
+     },
+     "execution_count": 54,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "my_string = my_string.strip()\n",
+    "my_string"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "\"This string is a string that I'm working on. It's still a string though\""
+      ]
+     },
+     "execution_count": 60,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "string = list(my_string)\n",
+    "string[-10] = 'i'\n",
+    "\n",
+    "\"\".join(string)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Something else'"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "my_string"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[79, 82, 69, 4, 92, 93, 1234, 46, 81, 79]"
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "new_list[-4] = 1234\n",
+    "new_list"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Tuples (pronounced two-ples)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(12, 3, 56, 2, 678, 9)"
+      ]
+     },
+     "execution_count": 64,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tup1 = (12, 3, 56, 2, 678, 9)\n",
+    "tup1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "tuple"
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(tup1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 62,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(12, 3, 56, 2, 678, 9)"
+      ]
+     },
+     "execution_count": 62,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tup2 = 12, 3, 56, 2, 678, 9\n",
+    "tup2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "TypeError",
+     "evalue": "'tuple' object does not support item assignment",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-34-f1635dd07184>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mtup2\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;36m45\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mTypeError\u001b[0m: 'tuple' object does not support item assignment"
+     ]
+    }
+   ],
+   "source": [
+    "tup2[0] = 45"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_name = input(\"What's my name? \")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(my_name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 63,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(1, 2, 3)"
+      ]
+     },
+     "execution_count": 63,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tup2 = (1, 2, 3)\n",
+    "tup2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 67,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(1, 2, 3, 12, 3, 56, 2, 678, 9)"
+      ]
+     },
+     "execution_count": 67,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tup2 + tup1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 73,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(1, 9876543, 3)"
+      ]
+     },
+     "execution_count": 73,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "changed_tuple = list(tup2)\n",
+    "changed_tuple[1] = 9876543\n",
+    "tuple(changed_tuple)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 74,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(1, 2, 3)"
+      ]
+     },
+     "execution_count": 74,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tup2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise #1 <br>\n",
+    "<p>Create a calculator using functions that asks for two numbers and performs a calculation that the user inputs... Loop until the user chooses not to perform any more calculations.<br><b><i>Hint: Take yesterday's code from the extra exercise...</i></b></p>d\n",
+    "d\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "int('1')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "int('%')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "188//65"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "float(7/3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "stuff = int(input(\"Say something... \"))\n",
+    "\n",
+    "type(stuff)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "'1' + '3'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "4"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "1 + 3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ask user if they want add, multiply, subtract, or divide\n",
+    "from IPython.display import clear_output\n",
+    "\n",
+    "i = 0\n",
+    "while i < 3:\n",
+    "    answer = input(\"What would you like to do (add, multiply, subtract, or divide)? Type 'quit' to end the program. \")\n",
+    "    clear_output()\n",
+    "    \n",
+    "    if answer == 'quit':\n",
+    "        break\n",
+    "        \n",
+    "    try:\n",
+    "        num1 = float(input(\"What's the first number? \"))\n",
+    "        num2 = float(input(\"What's the second number? \"))\n",
+    "        \n",
+    "        if answer == 'add':\n",
+    "            print(f\"{num1} + {num2} = {num1 + num2}\")\n",
+    "        elif answer == 'subtract':\n",
+    "            print(f\"{num1} - {num2} = {num1 - num2}\")\n",
+    "        elif answer == 'multiply':\n",
+    "            print(f\"{num1} * {num2} = {num1 * num2}\")\n",
+    "        elif answer == 'divide':\n",
+    "            print(f\"{num1} / {num2} = {num1 / num2}\")\n",
+    "        else:\n",
+    "            print(\"That operation was invalid. Try again. \")\n",
+    "    except ValueError:\n",
+    "        print(\"That was an invalid character, try again...\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise 2 <br>\n",
+    "<p>Create a pyramid of X's for n number of levels.</p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "1\n",
+      "2\n",
+      "3\n",
+      "4\n",
+      "5\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(6):\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'   XXXXX'"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "' ' * (6 - 2 - 1) + 'X' * (2 * 2 + 1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "How many levels would you like to make this pyramid? 7\n",
+      "      X\n",
+      "     XXX\n",
+      "    XXXXX\n",
+      "   XXXXXXX\n",
+      "  XXXXXXXXX\n",
+      " XXXXXXXXXXX\n",
+      "XXXXXXXXXXXXX\n"
+     ]
+    }
+   ],
+   "source": [
+    "def build_pyramid():\n",
+    "    n = int(input(\"How many levels would you like to make this pyramid? \"))\n",
+    "    for i in range(n):\n",
+    "        print(' ' * (n - i - 1) + 'X' * (2 * i + 1))\n",
+    "\n",
+    "build_pyramid()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
